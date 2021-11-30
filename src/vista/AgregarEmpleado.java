@@ -51,6 +51,17 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         jtxt_dianac = new javax.swing.JTextField();
         jtxt_mesnac = new javax.swing.JTextField();
         jtxt_anonac = new javax.swing.JTextField();
+        jcbo_estcivil = new javax.swing.JComboBox<>();
+        jlblb_estcivil = new javax.swing.JLabel();
+        jtxt_fono = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxt_direccion = new javax.swing.JTextArea();
+        jtxt_diacont = new javax.swing.JTextField();
+        jtxt_mescont = new javax.swing.JTextField();
+        jtxt_anocont = new javax.swing.JTextField();
+        jlbl_fechaCont = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jbtn_agregar = new javax.swing.JButton();
 
@@ -136,6 +147,57 @@ public class AgregarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jcbo_estcivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Casado(a)", "Viudo(a)", "Divorciado(a)" }));
+
+        jlblb_estcivil.setText("Estado Civil");
+
+        jtxt_fono.setText("123456789");
+        jtxt_fono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_fonoFocusGained(evt);
+            }
+        });
+        jtxt_fono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_fonoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Teléfono");
+
+        jLabel5.setText("Dirección");
+
+        jtxt_direccion.setColumns(20);
+        jtxt_direccion.setLineWrap(true);
+        jtxt_direccion.setRows(5);
+        jtxt_direccion.setToolTipText("");
+        jtxt_direccion.setWrapStyleWord(true);
+        jtxt_direccion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jScrollPane1.setViewportView(jtxt_direccion);
+
+        jtxt_diacont.setText("dd");
+        jtxt_diacont.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_diacontFocusGained(evt);
+            }
+        });
+
+        jtxt_mescont.setText("mm");
+        jtxt_mescont.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_mescontFocusGained(evt);
+            }
+        });
+
+        jtxt_anocont.setText("aaaa");
+        jtxt_anocont.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_anocontFocusGained(evt);
+            }
+        });
+
+        jlbl_fechaCont.setText("Fecha Contrato");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,30 +219,47 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlbl_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlblb_estcivil, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlbl_fechaCont, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtxt_nombre)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jtxt_numrut)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxt_dvrut, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jtxt_apmaterno)
-                    .addComponent(jtxt_appaterno)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jtxt_nombre)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jtxt_numrut)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jtxt_dvrut, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxt_apmaterno)
+                        .addComponent(jtxt_appaterno)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jtxt_dianac, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxt_mesnac, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jrdb_masculino))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jrdb_femenino))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxt_anonac, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jtxt_fono)
+                        .addComponent(jcbo_estcivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtxt_dianac, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtxt_mesnac, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jrdb_masculino))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrdb_femenino)
-                            .addComponent(jtxt_anonac, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addComponent(jtxt_diacont, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxt_mescont, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxt_anocont, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +298,25 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                     .addComponent(jtxt_dianac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxt_mesnac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxt_anonac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlblb_estcivil)
+                    .addComponent(jcbo_estcivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_diacont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_mescont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_anocont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbl_fechaCont))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jbtn_agregar.setText("Agregar");
@@ -269,9 +366,9 @@ public class AgregarEmpleado extends javax.swing.JFrame {
 
     private void jbtn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarActionPerformed
 
-        int numRut;
-        String dvRut,nombre,appaterno,apmaterno,genero,dianac,mesnac,anonac,fecnacStr;
-        Date fecnac;
+        int numRut,fono;
+        String dvRut,nombre,appaterno,apmaterno,genero,dianac,mesnac,anonac,fecNacStr,estCivil,direccion,diacont,mescont,anocont,fecContStr;
+        Date fecNac,fecCont;
         
         numRut = Integer.parseInt(this.jtxt_numrut.getText());
         dvRut = this.jtxt_dvrut.getText();
@@ -283,19 +380,34 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         dianac = this.jtxt_dianac.getText();
         mesnac = this.jtxt_mesnac.getText();
         anonac = this.jtxt_anonac.getText();
-        
-        fecnacStr = anonac + "-" + mesnac + "-" + dianac;
+        fecNacStr = anonac + "-" + mesnac + "-" + dianac;
         SimpleDateFormat formateo = new SimpleDateFormat("yyyy-MM-dd");
-
         try {
-            fecnac = formateo.parse(fecnacStr);
+            fecNac = formateo.parse(fecNacStr);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese formato de fecha dd-mm-aaaa", "Validación", 2);
+            this.jtxt_dianac.requestFocus();
+            return;
+        }
+        
+        estCivil = this.jcbo_estcivil.getSelectedItem().toString();
+        fono = Integer.parseInt(this.jtxt_fono.getText());
+        direccion = this.jtxt_direccion.getText();
+        
+        diacont = this.jtxt_diacont.getText();
+        mescont = this.jtxt_mescont.getText();
+        anocont = this.jtxt_anocont.getText();
+        fecContStr = anocont + "-" + mescont + "-" + diacont;
+        SimpleDateFormat formateoCont = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            fecCont = formateoCont.parse(fecContStr);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(this, "Ingrese formato de fecha dd-mm-aaaa", "Validación", 2);
             this.jtxt_dianac.requestFocus();
             return;
         }
        
-        Empleado empleado = new Empleado(numRut,dvRut,nombre,appaterno,apmaterno,genero,fecnac);
+        Empleado empleado = new Empleado(numRut,dvRut,nombre,appaterno,apmaterno,genero,fecNac,estCivil,fono,direccion,fecCont);
 
         Registro reg = new Registro();
         
@@ -342,6 +454,26 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         this.jtxt_anonac.setText("");
     }//GEN-LAST:event_jtxt_anonacFocusGained
 
+    private void jtxt_fonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_fonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_fonoActionPerformed
+
+    private void jtxt_fonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_fonoFocusGained
+        this.jtxt_fono.setText("");
+    }//GEN-LAST:event_jtxt_fonoFocusGained
+
+    private void jtxt_diacontFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_diacontFocusGained
+        this.jtxt_diacont.setText("");
+    }//GEN-LAST:event_jtxt_diacontFocusGained
+
+    private void jtxt_mescontFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_mescontFocusGained
+        this.jtxt_mescont.setText("");
+    }//GEN-LAST:event_jtxt_mescontFocusGained
+
+    private void jtxt_anocontFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_anocontFocusGained
+        this.jtxt_anocont.setText("");
+    }//GEN-LAST:event_jtxt_anocontFocusGained
+
         
     /**
      * @param args the command line arguments
@@ -382,22 +514,33 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.ButtonGroup jbtnGroup_genero;
     private javax.swing.JButton jbtn_agregar;
+    private javax.swing.JComboBox<String> jcbo_estcivil;
     private javax.swing.JLabel jlbl_apmaterno;
     private javax.swing.JLabel jlbl_appaterno;
+    private javax.swing.JLabel jlbl_fechaCont;
     private javax.swing.JLabel jlbl_fecnac;
     private javax.swing.JLabel jlbl_genero;
+    private javax.swing.JLabel jlblb_estcivil;
     private javax.swing.JRadioButton jrdb_femenino;
     private javax.swing.JRadioButton jrdb_masculino;
+    private javax.swing.JTextField jtxt_anocont;
     private javax.swing.JTextField jtxt_anonac;
     private javax.swing.JTextField jtxt_apmaterno;
     private javax.swing.JTextField jtxt_appaterno;
+    private javax.swing.JTextField jtxt_diacont;
     private javax.swing.JTextField jtxt_dianac;
+    private javax.swing.JTextArea jtxt_direccion;
     private javax.swing.JTextField jtxt_dvrut;
+    private javax.swing.JTextField jtxt_fono;
+    private javax.swing.JTextField jtxt_mescont;
     private javax.swing.JTextField jtxt_mesnac;
     private javax.swing.JTextField jtxt_nombre;
     private javax.swing.JTextField jtxt_numrut;

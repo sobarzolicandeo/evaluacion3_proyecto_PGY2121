@@ -15,14 +15,15 @@ public class Registro {
     
     
     public boolean agregar(Empleado empleado){
-        Date fecnac;
+        Date fecnac,feccont;
         try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            fecnac = empleado.getFecnac();
+            fecnac = empleado.getFecNac();
+            feccont = empleado.getFecCont();
             
-            String query = "INSERT INTO empleado(numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp) VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO empleado(numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp,estcivil_emp,fono_emp,direccion_emp,feccont_emp) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             stmt.setInt(1, empleado.getNumRut());
@@ -32,6 +33,10 @@ public class Registro {
             stmt.setString(5, empleado.getApmaterno());
             stmt.setString(6, empleado.getGenero());
             stmt.setDate(7, new java.sql.Date(fecnac.getTime()));
+            stmt.setString(8, empleado.getEstCivil());
+            stmt.setInt(9, empleado.getFono());
+            stmt.setString(10, empleado.getDireccion());
+            stmt.setDate(11, new java.sql.Date(feccont.getTime()));
             
             stmt.executeUpdate();
             stmt.close();
