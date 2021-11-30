@@ -5,7 +5,10 @@ import java.util.Date;
 import modelo.Empleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author sobarzolicandeo
@@ -26,7 +29,7 @@ public class Registro {
             String query = "INSERT INTO empleado(numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp,estcivil_emp,fono_emp,direccion_emp,feccont_emp) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
-            stmt.setInt(1, empleado.getNumRut());
+            stmt.setString(1, empleado.getNumRut());
             stmt.setString(2, empleado.getDvRut());
             stmt.setString(3, empleado.getNombre());
             stmt.setString(4, empleado.getAppaterno());
@@ -52,4 +55,59 @@ public class Registro {
             return false;
         }
     }
+    
+    public List<Empleado> buscarTodos(){
+        
+        List<Empleado> lista = new ArrayList<>();
+        
+        
+        try {
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp,estcivil_emp,fono_emp,direccion_emp,feccont_emp FROM empleado order by numrut_emp";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                empleado.setNumRut(rs.getString("numrut_emp"));
+                empleado.setDvRut(rs.getString("dvrut_emp"));
+                empleado.setNombre(rs.getString("nombre_emp"));
+                empleado.setAppaterno(rs.getString("appaterno_emp"));
+                empleado.setApmaterno(rs.getString("apmaterno_emp"));
+                empleado.setGenero(rs.getString("genero_emp"));
+                empleado.setFecNac(rs.getDate("fecnac_emp"));
+                empleado.setEstCivil(rs.getString("estcivil"));
+                empleado.setFono(rs.getInt("fono_emp"));
+                empleado.setDireccion(rs.getString("direccion_emp"));
+                empleado.setFecCont(rs.getDate("feccont_emp"));
+                
+                lista.add(empleado);
+                
+            }
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al agregar Empleado: " + e.getMessage());
+            
+        } catch(Exception e){
+            System.out.println("Error al agregar empleado (EXCEPTION): " + e.getMessage());
+            
+        }
+        return lista;
+        
+    }
+    
+    public boolean buscarEmpleado(List<Empleado> lista,String numRut) {
+        for (Empleado empleado : lista) {
+            if (empleado.getNumRut().equals(numRut)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

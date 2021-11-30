@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Empleado {
     
-    private int numRut;
+    private String numRut;
     private String dvRut;
     private String nombre;
     private String appaterno;
@@ -24,7 +24,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int numRut, String dvRut, String nombre, String appaterno, String apmaterno, String genero, Date fecNac, String estCivil, int fono, String direccion, Date fecCont) {
+    public Empleado(String numRut, String dvRut, String nombre, String appaterno, String apmaterno, String genero, Date fecNac, String estCivil, int fono, String direccion, Date fecCont) {
         this.numRut = numRut;
         this.dvRut = dvRut;
         this.nombre = nombre;
@@ -38,11 +38,11 @@ public class Empleado {
         this.fecCont = fecCont;
     }
 
-    public int getNumRut() {
+    public String getNumRut() {
         return numRut;
     }
 
-    public void setNumRut(int numRut) {
+    public void setNumRut(String numRut) {
         this.numRut = numRut;
     }
 

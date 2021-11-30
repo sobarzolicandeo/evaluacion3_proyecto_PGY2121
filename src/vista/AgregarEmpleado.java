@@ -378,11 +378,11 @@ public class AgregarEmpleado extends javax.swing.JFrame {
 
     private void jbtn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarActionPerformed
 
-        int numRut,fono;
-        String dvRut,nombre,appaterno,apmaterno,genero,dianac,mesnac,anonac,fecNacStr,estCivil,direccion,diacont,mescont,anocont,fecContStr;
+        int fono;
+        String numRut,dvRut,nombre,appaterno,apmaterno,genero,dianac,mesnac,anonac,fecNacStr,estCivil,direccion,diacont,mescont,anocont,fecContStr;
         Date fecNac,fecCont;
         
-        numRut = Integer.parseInt(this.jtxt_numrut.getText());
+        numRut = this.jtxt_numrut.getText();
         dvRut = this.jtxt_dvrut.getText();
         nombre = this.jtxt_nombre.getText();
         appaterno = this.jtxt_apmaterno.getText();
@@ -423,7 +423,17 @@ public class AgregarEmpleado extends javax.swing.JFrame {
 
         Registro reg = new Registro();
         
-        reg.agregar(empleado);
+        if (reg.buscarEmpleado(reg.buscarTodos(), numRut) == false) {
+            if (reg.agregar(empleado)) {
+                JOptionPane.showMessageDialog(this, "Se Agregó el empleado", "Información", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Agregó el empleado", "Información", 0);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Empleado ya existe", "Información", 1);
+        }
+        
     }//GEN-LAST:event_jbtn_agregarActionPerformed
 
     private void jtxt_anonacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_anonacActionPerformed
