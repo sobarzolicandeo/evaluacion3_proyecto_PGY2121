@@ -136,4 +136,41 @@ public class Registro {
         }
     }
     
+    public Empleado buscarPorNumRut(String numRut){
+        
+        Empleado empleado = new Empleado();
+        
+        try {
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,fono_emp,fecnac_emp,feccont_emp,activo_emp FROM empleado WHERE numrut_emp = ?";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            stmt.setString(1, numRut);
+            
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                empleado.setNumRut(rs.getString("numrut_emp"));
+                empleado.setDvRut(rs.getString("dvrut_emp"));
+                empleado.setNombre(rs.getString("nombre_emp"));
+                empleado.setAppaterno(rs.getString("appaterno_emp"));
+                empleado.setApmaterno(rs.getString("apmaterno_emp"));
+                empleado.setFono(rs.getInt("fono_emp"));
+                empleado.setFecNac(rs.getDate("fecnac_emp"));
+                empleado.setFecCont(rs.getDate("feccont_emp"));
+                empleado.setActivo(rs.getBoolean("activo_emp"));
+            }
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al buscar Empleado: " + e.getMessage());
+            
+        } catch(Exception e){
+            System.out.println("Error al buscar empleado (EXCEPTION): " + e.getMessage());
+            
+        }
+        return empleado;
+        
+    }
 }

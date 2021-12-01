@@ -45,7 +45,7 @@ public class EliminarEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Número de rut sin dígito verificador:");
+        jLabel2.setText("Rut sin dígito verificador:");
 
         jbtn_eliminar.setText("Eliminar");
         jbtn_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public class EliminarEmpleado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtxt_numRut, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
