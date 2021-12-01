@@ -414,7 +414,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
             return;
         }
         
-        appaterno = this.jtxt_apmaterno.getText();
+        appaterno = this.jtxt_appaterno.getText();
         if (appaterno.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese apellido paterno", "Validación", 2);
             this.jtxt_appaterno.requestFocus();

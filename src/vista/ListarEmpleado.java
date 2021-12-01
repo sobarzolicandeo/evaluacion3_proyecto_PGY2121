@@ -5,6 +5,16 @@
  */
 package vista;
 
+import controlador.Registro;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Empleado;
+
 /**
  *
  * @author sobarzolicandeo
@@ -27,22 +37,177 @@ public class ListarEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jbtn_buscar = new javax.swing.JButton();
+        jtxt_numRut = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jsl_datos = new javax.swing.JScrollPane();
+        jtbl_datos = new javax.swing.JTable();
+        jbtn_volver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jbtn_buscar.setText("Buscar");
+        jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Rut sin dígito verificador:");
+
+        jtbl_datos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Rut", "Nombre", "A. Paterno", "A. Materno", "Edad", "Fono", "Fecha Contrato", "Activo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jsl_datos.setViewportView(jtbl_datos);
+
+        jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtn_volver)
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxt_numRut, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtn_buscar))
+                    .addComponent(jsl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 823, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtn_buscar)
+                    .addComponent(jtxt_numRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jbtn_volver))
+                .addGap(18, 18, 18)
+                .addComponent(jsl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
+        String numRut, dvRut, rut, nombre, apaterno, amaterno,fecCont;
+        int fono,edad;
+        boolean activo;
+        
+        Registro reg = new Registro();
+
+        DefaultTableModel modelo = (DefaultTableModel) this.jtbl_datos.getModel();
+
+        try {
+            numRut = this.jtxt_numRut.getText();
+
+        } catch (Exception e) {
+            numRut = "";
+        }
+
+        modelo.setRowCount(0);
+
+        if (numRut.isEmpty()) { //listar a todos
+            List<Empleado> lista = reg.buscarTodos();
+
+            for (Empleado empleado : lista) {
+                numRut = empleado.getNumRut();
+                dvRut = empleado.getDvRut();
+                rut = numRut +" - "+dvRut;
+                
+                nombre = empleado.getNombre();
+                apaterno = empleado.getAppaterno();
+                amaterno = empleado.getApmaterno();
+                 
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
+                int anoActual = Integer.parseInt(dtf.format(LocalDateTime.now()));
+                Date fechaNac = empleado.getFecNac();
+                DateFormat fechaNacFormat = new SimpleDateFormat("yyyy");  
+                int anoNac = Integer.parseInt(fechaNacFormat.format(fechaNac));
+                edad = anoActual-anoNac;
+                
+                fono = empleado.getFono();
+                
+                Date date = empleado.getFecCont();
+                DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");  
+                String strDate = dateFormat.format(date); 
+                fecCont = strDate;
+                
+                activo = empleado.getActivo();
+
+                modelo.addRow(new Object[]{rut, nombre, apaterno, amaterno, edad, fono, fecCont, activo});
+            }
+
+        } else { //consulta por id
+
+            Empleado empleado = reg.buscarPorNumRut(numRut);
+                numRut = empleado.getNumRut();
+                dvRut = empleado.getDvRut();
+                rut = numRut +"-"+dvRut;
+                
+                nombre = empleado.getNombre();
+                apaterno = empleado.getAppaterno();
+                amaterno = empleado.getApmaterno();
+                
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
+                int anoActual = Integer.parseInt(dtf.format(LocalDateTime.now()));
+                Date fechaNac = empleado.getFecNac();
+                DateFormat fechaNacFormat = new SimpleDateFormat("yyyy");  
+                int anoNac = Integer.parseInt(fechaNacFormat.format(fechaNac));
+                edad = anoActual-anoNac;
+                
+                fono = empleado.getFono();
+                
+                Date date = empleado.getFecCont();
+                DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");  
+                String strDate = dateFormat.format(date); 
+                fecCont = strDate;
+                
+                activo = empleado.getActivo();
+
+            modelo.addRow(new Object[]{rut, nombre, apaterno, amaterno, edad, fono, fecCont, activo});
+        }
+    }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbtn_volverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbtn_buscar;
+    private javax.swing.JButton jbtn_volver;
+    private javax.swing.JScrollPane jsl_datos;
+    private javax.swing.JTable jtbl_datos;
+    private javax.swing.JTextField jtxt_numRut;
     // End of variables declaration//GEN-END:variables
 }
