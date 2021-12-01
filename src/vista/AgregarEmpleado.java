@@ -494,7 +494,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                 this.jtxt_anocont.setText("aaaa");
                 this.jchk_activo.setSelected(false);
             } else {
-                JOptionPane.showMessageDialog(this, "Empleado ya existe", "Información", 1);
+                JOptionPane.showMessageDialog(this, "Empleado ya existe", "Información", 2);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Error al ingresar Empleado", "Información", 0);

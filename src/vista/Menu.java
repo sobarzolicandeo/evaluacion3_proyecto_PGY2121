@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_agregar = new javax.swing.JMenuItem();
+        jmi_actualizar = new javax.swing.JMenuItem();
         jmi_eliminar = new javax.swing.JMenuItem();
         jmi_listar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -65,6 +66,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmi_agregar);
+
+        jmi_actualizar.setText("Actualizar");
+        jmi_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_actualizarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmi_actualizar);
 
         jmi_eliminar.setText("Eliminar");
         jmi_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +145,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_agregarActionPerformed
 
     private void jmi_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarActionPerformed
-        // TODO add your handling code here:
+        ListarEmpleado listar = new ListarEmpleado();
+        listar.setVisible(true);
     }//GEN-LAST:event_jmi_listarActionPerformed
 
     private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
@@ -152,6 +162,11 @@ public class Menu extends javax.swing.JFrame {
         EliminarEmpleado eliminar = new EliminarEmpleado();
         eliminar.setVisible(true);
     }//GEN-LAST:event_jmi_eliminarActionPerformed
+
+    private void jmi_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_actualizarActionPerformed
+        ActualizarEmpleado actualizar = new ActualizarEmpleado();
+        actualizar.setVisible(true);
+    }//GEN-LAST:event_jmi_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +221,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JMenuItem jmi_actualizar;
     private javax.swing.JMenuItem jmi_agregar;
     private javax.swing.JMenuItem jmi_comentarios;
     private javax.swing.JMenuItem jmi_eliminar;

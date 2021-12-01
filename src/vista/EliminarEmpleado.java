@@ -118,7 +118,7 @@ public class EliminarEmpleado extends javax.swing.JFrame {
                   JOptionPane.showMessageDialog(this, "Error al eliminar empleado", "Información", 0);
                 }
             } else {
-            JOptionPane.showMessageDialog(this, "Empleado no existe", "Información", 1);
+            JOptionPane.showMessageDialog(this, "Empleado no existe", "Información", 2);
         }
         }
     }//GEN-LAST:event_jbtn_eliminarActionPerformed
