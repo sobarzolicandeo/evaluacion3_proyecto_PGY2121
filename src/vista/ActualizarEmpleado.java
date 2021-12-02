@@ -56,6 +56,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
         jlbl_rut = new javax.swing.JLabel();
         jlbl_nombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jtxt_appaterno = new javax.swing.JTextField();
         jtxt_apmaterno = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -68,6 +69,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
         jtxt_direccion = new javax.swing.JTextArea();
         jchk_activo = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,7 +82,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jlbl_actualizar1.setText("Rut usuario sin dígito verificador");
+        jlbl_actualizar1.setText("Rut sin dígito verificador");
 
         jbtn_actualizar.setText("Actualizar");
         jbtn_actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +109,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
 
         jlbl_nombre.setText("Nombre ");
 
-        jLabel1.setText("Apellido Paterno");
+        jTextField1.setText("Apellido Paterno");
 
         jtxt_appaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +143,8 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
 
         jLabel6.setText("Activo");
 
+        jLabel7.setText("Apellido Paterno");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,7 +154,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
                 .addComponent(jlbl_actualizar)
                 .addGap(149, 149, 149))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jlbl_actualizar1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,20 +167,17 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlbl_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jlbl_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel7)))
                     .addComponent(jbtn_volver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jtxt_userRut, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jbtn_buscar)
-                            .addGap(42, 42, 42))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jbtn_actualizar)
-                            .addGap(99, 99, 99)))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtxt_userRut, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtn_buscar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jbtn_actualizar)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jchk_activo)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -189,8 +190,8 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
                                 .addComponent(jtxt_appaterno, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jlblb_estcivil, 0, 160, Short.MAX_VALUE)
                                 .addComponent(jtxt_fono))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(146, 146, 146))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +215,9 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jtxt_appaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtxt_appaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxt_apmaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,7 +310,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
             jchk_activo.setSelected(true);
         }
        
-        genero ="Soltero(a)";
+        genero ="Femenino";
         
          
         String fechaStr = "2021-12-02";
@@ -315,7 +318,6 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
        
         try { 
             fecNac = formateoFec.parse(fechaStr);
-             System.out.print(fecNac);
         } catch (ParseException ex) {
             Logger.getLogger(ActualizarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -327,8 +329,6 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
         }
                 
         Empleado empleado = new Empleado(numRut,dvRut,nombre,appaterno,apmaterno,genero,fecNac,estCivil,fono,direccion,fecCont,activo);
-
-        
         
         Registro reg = new Registro();
         
@@ -339,7 +339,7 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
     private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
         String numRutBuscar = this.jtxt_userRut.getText();
         
-        Empleado empleado = reg.buscarPorNumRut(numRutBuscar);
+        Empleado empleado = reg.buscarPorNumRutActualizar(numRutBuscar);
         
         String numRut = empleado.getNumRut();
         String dvRut = empleado.getDvRut();
@@ -386,7 +386,9 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbtn_actualizar;
     private javax.swing.JButton jbtn_buscar;
     private javax.swing.JButton jbtn_volver;

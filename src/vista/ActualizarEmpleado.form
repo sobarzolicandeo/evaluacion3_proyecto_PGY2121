@@ -29,7 +29,7 @@
               <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="1" attributes="0">
                       <Component id="jlbl_actualizar1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -44,25 +44,20 @@
                               <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
                               <Component id="jlbl_nombre" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jbtn_volver" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jtxt_userRut" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jbtn_buscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jbtn_actualizar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" attributes="0">
+                      <Component id="jtxt_userRut" min="-2" pref="114" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jbtn_buscar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="jbtn_actualizar" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jchk_activo" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -79,9 +74,9 @@
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,7 +105,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtxt_appaterno" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtxt_appaterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -163,7 +161,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlbl_actualizar1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rut usuario sin d&#xed;gito verificador"/>
+        <Property name="text" type="java.lang.String" value="Rut sin d&#xed;gito verificador"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn_actualizar">
@@ -281,6 +279,11 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="Activo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellido Paterno"/>
       </Properties>
     </Component>
   </SubComponents>

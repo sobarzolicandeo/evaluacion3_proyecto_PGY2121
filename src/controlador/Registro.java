@@ -173,8 +173,45 @@ public class Registro {
         return empleado;
         
     }
+    
+    public Empleado buscarPorNumRutActualizar(String numRut){
+        
+        Empleado empleado = new Empleado();
+        
+        try {
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,estcivil_emp,fono_emp,direccion_emp,activo_emp FROM empleado WHERE numrut_emp = ?";
 
-public boolean actualizar(Empleado empleado){
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            stmt.setString(1, numRut);
+            
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                empleado.setNumRut(rs.getString("numrut_emp"));
+                empleado.setDvRut(rs.getString("dvrut_emp"));
+                empleado.setNombre(rs.getString("nombre_emp"));
+                empleado.setAppaterno(rs.getString("appaterno_emp"));
+                empleado.setApmaterno(rs.getString("apmaterno_emp"));
+                empleado.setEstCivil(rs.getString("estcivil_emp"));
+                empleado.setFono(rs.getInt("fono_emp"));
+                empleado.setDireccion(rs.getString("direccion_emp"));
+                empleado.setActivo(rs.getBoolean("activo_emp"));
+            }
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al buscar Empleado: " + e.getMessage());
+            
+        } catch(Exception e){
+            System.out.println("Error al buscar empleado (EXCEPTION): " + e.getMessage()); 
+        }
+        return empleado;
+    }
+
+    public boolean actualizar(Empleado empleado){
         
         try {
             Conexion con = new Conexion();
@@ -184,20 +221,20 @@ public boolean actualizar(Empleado empleado){
             fecnac = empleado.getFecNac();
             feccont = empleado.getFecCont();
             
-            String query = "UPDATE empleado set numrut_emp = ?,dvrut_emp = ?, nombre_emp = ?,appaterno_emp = ?,apmaterno_emp = ?, genero_emp = ?, fecnac_emp = ?, estcivil_emp = ?, fono_emp = ?, direccion_emp = ?, feccont_emp = ?, activo_emp = ?  WHERE numrut_emp = ?";
+            String query = "UPDATE empleado set dvrut_emp = ?, nombre_emp = ?, appaterno_emp = ?, apmaterno_emp = ?, genero_emp = ?, fecnac_emp = ?, estcivil_emp = ?, fono_emp = ?, direccion_emp = ?, feccont_emp = ?, activo_emp = ?  WHERE numrut_emp = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(1, empleado.getNumRut());
-            stmt.setString(2, empleado.getDvRut());
-            stmt.setString(3, empleado.getNombre());
-            stmt.setString(4, empleado.getAppaterno());
-            stmt.setString(5, empleado.getApmaterno());
-            stmt.setString(6, empleado.getGenero());
-            stmt.setDate(7, new java.sql.Date(fecnac.getTime()));
-            stmt.setString(8, empleado.getEstCivil());
-            stmt.setInt(9, empleado.getFono());
-            stmt.setString(10, empleado.getDireccion());
-            stmt.setDate(11, new java.sql.Date(feccont.getTime()));
-            stmt.setBoolean(12, empleado.getActivo());
+            stmt.setString(1, empleado.getDvRut());
+            stmt.setString(2, empleado.getNombre());
+            stmt.setString(3, empleado.getAppaterno());
+            stmt.setString(4, empleado.getApmaterno());
+            stmt.setString(5, empleado.getGenero());
+            stmt.setDate(6, new java.sql.Date(fecnac.getTime()));
+            stmt.setString(7, empleado.getEstCivil());
+            stmt.setInt(8, empleado.getFono());
+            stmt.setString(9, empleado.getDireccion());
+            stmt.setDate(10, new java.sql.Date(feccont.getTime()));
+            stmt.setBoolean(11, empleado.getActivo());
+            stmt.setString(12, empleado.getNumRut());
             
             stmt.executeUpdate();
             stmt.close();
