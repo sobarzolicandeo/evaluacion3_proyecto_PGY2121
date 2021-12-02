@@ -151,6 +151,11 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         });
 
         jcbo_estcivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Casado(a)", "Viudo(a)", "Divorciado(a)" }));
+        jcbo_estcivil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbo_estcivilActionPerformed(evt);
+            }
+        });
 
         jlblb_estcivil.setText("Estado Civil");
 
@@ -307,7 +312,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlblb_estcivil)
-                    .addComponent(jcbo_estcivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbo_estcivil, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,6 +570,10 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
         dispose();
     }//GEN-LAST:event_jbtn_volverActionPerformed
+
+    private void jcbo_estcivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbo_estcivilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbo_estcivilActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
