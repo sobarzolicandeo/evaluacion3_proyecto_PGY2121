@@ -5,12 +5,29 @@
  */
 package vista;
 
+import bd.Conexion;
+import controlador.Registro;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Empleado;
+
 /**
  *
  * @author sobarzolicandeo
  */
 public class ActualizarEmpleado extends javax.swing.JFrame {
 
+    Registro reg = new Registro();
     /**
      * Creates new form ActualizarEmpleado
      */
@@ -27,43 +44,406 @@ public class ActualizarEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlbl_actualizar = new javax.swing.JLabel();
+        jtxt_userRut = new javax.swing.JTextField();
+        jlbl_actualizar1 = new javax.swing.JLabel();
+        jbtn_actualizar = new javax.swing.JButton();
+        jbtn_volver = new javax.swing.JButton();
+        jbtn_buscar = new javax.swing.JButton();
+        jtxt_numrut = new javax.swing.JTextField();
+        jtxt_dvrut = new javax.swing.JTextField();
+        jtxt_nombre = new javax.swing.JTextField();
+        jlbl_rut = new javax.swing.JLabel();
+        jlbl_nombre = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxt_appaterno = new javax.swing.JTextField();
+        jtxt_apmaterno = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jlblb_estcivil = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jtxt_fono = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxt_direccion = new javax.swing.JTextArea();
+        jchk_activo = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
+        jlbl_actualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbl_actualizar.setText("Actualizar Datos De Usuario ");
+
+        jtxt_userRut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_userRutActionPerformed(evt);
+            }
+        });
+
+        jlbl_actualizar1.setText("Rut usuario sin dígito verificador");
+
+        jbtn_actualizar.setText("Actualizar");
+        jbtn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_actualizarActionPerformed(evt);
+            }
+        });
+
+        jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
+            }
+        });
+
+        jbtn_buscar.setText("Buscar");
+        jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarActionPerformed(evt);
+            }
+        });
+
+        jlbl_rut.setText("Rut");
+
+        jlbl_nombre.setText("Nombre ");
+
+        jLabel1.setText("Apellido Paterno");
+
+        jtxt_appaterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_appaternoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Apellido Materno");
+
+        jLabel3.setText("Estado Civil");
+
+        jlblb_estcivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Casado(a)", "Viudo(a)", "Divorciado(a)" }));
+        jlblb_estcivil.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jlblb_estcivilComponentAdded(evt);
+            }
+        });
+        jlblb_estcivil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlblb_estcivilActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Telefono");
+
+        jLabel5.setText("Dirección");
+
+        jtxt_direccion.setColumns(20);
+        jtxt_direccion.setRows(5);
+        jScrollPane1.setViewportView(jtxt_direccion);
+
+        jLabel6.setText("Activo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlbl_actualizar)
+                .addGap(149, 149, 149))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jlbl_actualizar1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jlbl_rut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlbl_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jbtn_volver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jtxt_userRut, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbtn_buscar)
+                            .addGap(42, 42, 42))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jbtn_actualizar)
+                            .addGap(99, 99, 99)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(300, 300, 300))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jchk_activo)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtxt_apmaterno)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jtxt_numrut, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxt_dvrut, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtxt_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtxt_appaterno, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlblb_estcivil, 0, 160, Short.MAX_VALUE)
+                                .addComponent(jtxt_fono))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(146, 146, 146))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
                 .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addComponent(jlbl_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_userRut)
+                    .addComponent(jbtn_buscar)
+                    .addComponent(jlbl_actualizar1))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_numrut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_dvrut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbl_rut))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbl_nombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jtxt_appaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_apmaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jlblb_estcivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxt_fono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jchk_activo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtn_actualizar)
+                    .addComponent(jbtn_volver))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtxt_userRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_userRutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_userRutActionPerformed
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+      dispose();
+    }//GEN-LAST:event_jbtn_volverActionPerformed
+
+    private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
+        int fono;
+        String numRut,dvRut,nombre,appaterno,apmaterno,estCivil,direccion,genero;
+        Boolean activo;
+        Date fecNac = null, fecCont = null;
+        
+        numRut = this.jtxt_userRut.getText();
+        if (numRut.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese número de rut", "Validación", 2);
+            this.jtxt_numrut.requestFocus();
+            return;
+        }
+        
+        dvRut = this.jtxt_dvrut.getText();
+        if (dvRut.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese digito verificador", "Validación", 2);
+            this.jtxt_dvrut.requestFocus();
+            return;
+        }
+        
+        nombre = this.jtxt_nombre.getText();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese nombre", "Validación", 2);
+            this.jtxt_nombre.requestFocus();
+            return;
+        }
+        
+        appaterno = this.jtxt_apmaterno.getText();
+        if (appaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese apellido paterno", "Validación", 2);
+            this.jtxt_appaterno.requestFocus();
+            return;
+        }
+        
+        apmaterno = this.jtxt_apmaterno.getText();
+        if (apmaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese apellido materno", "Validación", 2);
+            this.jtxt_apmaterno.requestFocus();
+            return;
+        }
+        
+        estCivil = this.jlblb_estcivil.getSelectedItem().toString();
+        
+        fono = Integer.parseInt(this.jtxt_fono.getText());
+        
+        direccion = this.jtxt_direccion.getText();
+       
+        activo = this.jchk_activo.isSelected();
+        if(activo){
+            jchk_activo.setSelected(false);
+        } else {
+            jchk_activo.setSelected(true);
+        }
+       
+        genero ="Soltero(a)";
+        
+         
+        String fechaStr = "2021-12-02";
+        SimpleDateFormat formateoFec = new SimpleDateFormat("yyyy-MM-dd");
+       
+        try { 
+            fecNac = formateoFec.parse(fechaStr);
+             System.out.print(fecNac);
+        } catch (ParseException ex) {
+            Logger.getLogger(ActualizarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        try { 
+            fecCont= formateoFec.parse(fechaStr);
+        } catch (ParseException ex) {
+            Logger.getLogger(ActualizarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        Empleado empleado = new Empleado(numRut,dvRut,nombre,appaterno,apmaterno,genero,fecNac,estCivil,fono,direccion,fecCont,activo);
+
+        
+        
+        Registro reg = new Registro();
+        
+        reg.actualizar(empleado);
+        JOptionPane.showMessageDialog(this, "Datos Actualizados","Aviso",1);
+    }//GEN-LAST:event_jbtn_actualizarActionPerformed
+
+    private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
+        String numRutBuscar = this.jtxt_userRut.getText();
+        
+        Empleado empleado = reg.buscarPorNumRut(numRutBuscar);
+        
+        String numRut = empleado.getNumRut();
+        String dvRut = empleado.getDvRut();
+        String nombre = empleado.getNombre();
+        String appaterno = empleado.getAppaterno();
+        String apmaterno = empleado.getApmaterno();
+        String estCivil = empleado.getEstCivil();
+        String fono  = Integer.toString(empleado.getFono());
+        String direccion = empleado.getDireccion();
+        Boolean activo = empleado.getActivo();
+        
+        this.jtxt_numrut.setText(numRut);
+        this.jtxt_dvrut.setText(dvRut);
+        this.jtxt_nombre.setText(nombre);
+        this.jtxt_appaterno.setText(appaterno);
+        this.jtxt_apmaterno.setText(apmaterno);
+        this.jlblb_estcivil.setSelectedItem(estCivil);
+        this.jtxt_fono.setText(fono);
+        this.jtxt_direccion.setText(direccion);
+        if(activo == false) {
+            jchk_activo.setSelected(false);
+        } else {
+            jchk_activo.setSelected(true);
+        }
+        
+    }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jtxt_appaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_appaternoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_appaternoActionPerformed
+
+    private void jlblb_estcivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlblb_estcivilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlblb_estcivilActionPerformed
+
+    private void jlblb_estcivilComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jlblb_estcivilComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlblb_estcivilComponentAdded
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbtn_actualizar;
+    private javax.swing.JButton jbtn_buscar;
+    private javax.swing.JButton jbtn_volver;
+    private javax.swing.JCheckBox jchk_activo;
+    private javax.swing.JLabel jlbl_actualizar;
+    private javax.swing.JLabel jlbl_actualizar1;
+    private javax.swing.JLabel jlbl_nombre;
+    private javax.swing.JLabel jlbl_rut;
+    private javax.swing.JComboBox<String> jlblb_estcivil;
+    private javax.swing.JTextField jtxt_apmaterno;
+    private javax.swing.JTextField jtxt_appaterno;
+    private javax.swing.JTextArea jtxt_direccion;
+    private javax.swing.JTextField jtxt_dvrut;
+    private javax.swing.JTextField jtxt_fono;
+    private javax.swing.JTextField jtxt_nombre;
+    private javax.swing.JTextField jtxt_numrut;
+    private javax.swing.JTextField jtxt_userRut;
     // End of variables declaration//GEN-END:variables
+
+  public Empleado buscarPorNumRut(String numRut){
+        
+        Empleado empleado = new Empleado();
+        
+        try {
+            Conexion con = new Conexion();
+            try (Connection cnx = con.obtenerConexion()) {
+                String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp,estcivil_emp,fono_emp,direccion_emp,feccont_emp,activo_emp FROM empleado WHERE numrut_emp = ?";
+                try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+                    stmt.setString(1, numRut);
+                    
+                    try (ResultSet rs = stmt.executeQuery()) {
+                        if (rs.next()) {
+                            empleado.setNumRut(rs.getString("numrut_emp"));
+                            empleado.setDvRut(rs.getString("dvrut_emp"));
+                            empleado.setNombre(rs.getString("nombre_emp"));
+                            empleado.setAppaterno(rs.getString("appaterno_emp"));
+                            empleado.setApmaterno(rs.getString("apmaterno_emp"));
+                            empleado.setGenero(rs.getString("genero_emp"));
+                            empleado.setFecNac(rs.getDate("fecnac_emp"));
+                            empleado.setEstCivil(rs.getString("estcivil_emp"));
+                            empleado.setFono(rs.getInt("fono_emp"));
+                            empleado.setDireccion(rs.getString("direccion_emp"));
+                            empleado.setFecCont(rs.getDate("feccont_emp"));
+                            empleado.setActivo(rs.getBoolean("activo_emp"));
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error SQL al buscar Empleado: " + e.getMessage());
+            
+        } catch(Exception e){
+            System.out.println("Error al buscar Empleado (EXCEPTION): " + e.getMessage());
+            
+        }
+        return empleado;
+        
+    }
+    
 }
