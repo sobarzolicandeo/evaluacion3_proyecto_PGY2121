@@ -144,7 +144,8 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
                         
-            String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,genero_emp,fecnac_emp,estcivil_emp,fono_emp,direccion_emp,feccont_emp,activo_emp FROM empleado WHERE numrut_emp = ?";
+            String query = "SELECT numrut_emp,dvrut_emp,nombre_emp,appaterno_emp,apmaterno_emp,fono_emp,fecnac_emp,feccont_emp,activo_emp FROM empleado WHERE numrut_emp = ?";
+
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, numRut);
             
@@ -155,11 +156,8 @@ public class Registro {
                 empleado.setNombre(rs.getString("nombre_emp"));
                 empleado.setAppaterno(rs.getString("appaterno_emp"));
                 empleado.setApmaterno(rs.getString("apmaterno_emp"));
-                empleado.setGenero(rs.getString("genero_emp"));
-                empleado.setFecNac(rs.getDate("fecnac_emp"));
-                empleado.setEstCivil(rs.getString("estcivil_emp"));
                 empleado.setFono(rs.getInt("fono_emp"));
-                empleado.setDireccion(rs.getString("direccion_emp"));
+                empleado.setFecNac(rs.getDate("fecnac_emp"));
                 empleado.setFecCont(rs.getDate("feccont_emp"));
                 empleado.setActivo(rs.getBoolean("activo_emp"));
             }
@@ -170,13 +168,12 @@ public class Registro {
             System.out.println("Error SQL al buscar Empleado: " + e.getMessage());
             
         } catch(Exception e){
-            System.out.println("Error al buscar Empleado (EXCEPTION): " + e.getMessage());
-            
+            System.out.println("Error al buscar empleado (EXCEPTION): " + e.getMessage()); 
         }
         return empleado;
         
     }
-    
+
 public boolean actualizar(Empleado empleado){
         
         try {
