@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/vista/Menu.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/vista/ActualizarEmpleado.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/vista/AgregarEmpleado.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/modelo/Empleado.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/controlador/Registro.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/bd/Conexion.java</file>
+            <file>file:/C:/Users/Toxic%20Depresso/Documents/GitHub/evaluacion3_proyecto_PGY2121/src/vista/ListarEmpleado.java</file>
+        </group>
     </open-files>
 </project-private>
