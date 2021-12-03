@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 01, 2021 at 12:37 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.13
+-- Servidor: localhost
+-- Tiempo de generación: 03-12-2021 a las 01:17:31
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `trauko`
+-- Base de datos: `trauko`
 --
 CREATE DATABASE IF NOT EXISTS `trauko` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `trauko`;
@@ -26,7 +26,7 @@ USE `trauko`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `empleado`
+-- Estructura de tabla para la tabla `empleado`
 --
 
 CREATE TABLE `empleado` (
@@ -45,11 +45,22 @@ CREATE TABLE `empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`numrut_emp`, `dvrut_emp`, `nombre_emp`, `appaterno_emp`, `apmaterno_emp`, `genero_emp`, `fecnac_emp`, `estcivil_emp`, `fono_emp`, `direccion_emp`, `feccont_emp`, `activo_emp`) VALUES
+('08764035', '3', 'Mauricio ', 'Segovia', 'Arancibia', 'Masculino', '1959-10-03', 'Casado(a)', 973265471, 'Calle ecuador 34', '1978-12-26', 1),
+('11736726', '6', 'Gonzalo ', 'Andrade', 'Risso', 'Masculino', '1974-04-28', 'Soltero(a)', 983513458, 'Calle Valencia SN', '1989-01-26', 0),
+('13989545', '2', 'Felipe ', 'Airola', 'De la Fuente', 'Masculino', '1981-01-23', 'Casado(a)', 87523453, 'Calle los almendros 345', '2016-04-29', 1),
+('18298633', '1', 'Antonio ', 'Quevedo', 'Alvarez', 'Masculino', '1983-09-15', 'Casado(a)', 983464214, 'Jose Manuel 678', '1990-12-26', 0),
+('18547767', '3', 'Felipe', 'Ahumada', 'Ahumada', 'Masculino', '1933-09-22', 'Soltero(a)', 987687543, 'Los delirios 3', '2017-11-28', 1);
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `empleado`
+-- Indices de la tabla `empleado`
 --
 ALTER TABLE `empleado`
   ADD PRIMARY KEY (`numrut_emp`);
